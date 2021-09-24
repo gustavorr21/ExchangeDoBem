@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+<form [formGroup]="FormGroup" id="msform">
+  <!-- progressbar -->
+  <ul id="progressbar">
+    <li class="active">DADOS DO PROJETO</li>
+    <li>DADOS PESSOAIS</li>
+    <li>Personal Details</li>
+  </ul>
+  <!-- fieldsets -->
+  <fieldset>
+    <h2 class="fs-title">DADOS DO PROJETO</h2>
+    <h3 class="fs-subtitle">This is step 1</h3>
+    <div class="col-md-12">
+      <input type="text" formControlName="pais" name="pais" placeholder="Pais" />
+      <div class="required "*ngIf="(FormGroup.controls['pais'].dirty || FormGroup.controls['pais'].touched)">
+        <span  *ngIf="FormGroup.controls.pais.errors">
+          Pais obrigatório
+        </span>
+      </div>
+    </div>
+    <div class="col-md-12">
+    <input type="text" formControlName="projeto" name="projeto" placeholder="Projeto" />
+    <div class="required" style="margin-bottom: 5px" *ngIf="(FormGroup.controls['projeto'].dirty || FormGroup.controls['projeto'].touched)">
+      <label  *ngIf="FormGroup.controls.projeto.errors">
+        Projeto obrigatório
+      </label>
+    </div>
+  </div>
+
+    <input class="col-md-4" type="date" formControlName="data" name="data" />
+    <div style="margin-bottom: 5px" *ngIf="(FormGroup.controls['data'].dirty || FormGroup.controls['data'].touched)">
+      <span class="required col-md-2" style="width: 110px;" *ngIf="FormGroup.controls.data.errors">
+        Data obrigatória
+      </span>
+    </div>
+      <select class="col-md-5" formControlName="qtdSemana" class="form-control">
+        <option value="" selected disabled>Por quantas semanas você deseja voluntariar?</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10 ou mais</option>
+      </select>
+      <div style="margin-bottom: 5px" *ngIf="(FormGroup.controls['qtdSemana'].dirty || FormGroup.controls['qtdSemana'].touched)">
+        <span class="required" *ngIf="FormGroup.controls.qtdSemana.errors">
+          Campo obrigatório
+        </span>
+      </div>
+
+      <input type="button" name="next" class="next action-button" (click)="postar()" [disabled]="!FormGroup.valid" value="Next" />
+
+  </fieldset>
+
+
+
+  <fieldset>
+    <h2 class="fs-title">DADOS PESSOAIS</h2>
+    <h3 class="fs-subtitle">Your presence on the social network</h3>
+    <input type="text" name="twitter" placeholder="Twitter" />
+    <input type="text" name="facebook" placeholder="Facebook" />
+    <input type="text" name="gplus" placeholder="Google Plus" />
+    <input type="button" name="previous" class="previous action-button" value="Previous" />
+    <input type="button" name="next" class="next action-button" value="Next" />
+  </fieldset>
+  <fieldset>
+    <h2 class="fs-title">Personal Details</h2>
+    <h3 class="fs-subtitle">We will never sell it</h3>
+    <input type="text" name="fname" placeholder="First Name" />
+    <input type="text" name="lname" placeholder="Last Name" />
+    <input type="text" name="phone" placeholder="Phone" />
+    <textarea name="address" placeholder="Address"></textarea>
+    <input type="button" name="previous" class="previous action-button" value="Previous" />
+    <input type="submit" name="submit" class="submit action-button" value="Submit" />
+  </fieldset>
+</form>
+
+</body>
+</html>
