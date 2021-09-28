@@ -3,6 +3,9 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <!-- <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css"> -->
 </head>
 <body>
 <form [formGroup]="FormGroup" id="msform">
@@ -67,19 +70,232 @@
   <fieldset>
     <h2 class="fs-title">DADOS PESSOAIS</h2>
     <h3 class="fs-subtitle">Your presence on the social network</h3>
-    <input type="text" name="twitter" placeholder="Twitter" />
-    <input type="text" name="facebook" placeholder="Facebook" />
-    <input type="text" name="gplus" placeholder="Google Plus" />
+
+
+    <div class="col-md-12">
+      <div class="col-md-4 mr-4">
+        <input type="text" name="nome" placeholder="Nome" />
+      </div>
+      <div class="col-md-3 mr-4">
+        <select class="col-md-5" class="form-control">
+          <option value="" selected disabled>Sexo</option>
+          <option value="M">Masculino</option>
+          <option value="F">Feminino</option>
+          <option value="O">Outros</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <input type="text" name="cpf" class="cpf-mask" placeholder="CPF"/>
+      </div>
+    </div>
+
+
+
+
+
+    <div class="col-md-12 mb-3">
+      <div class="col-md-4 mr-4">
+        <input type="date" name="dataNascimento" placeholder="Data de Nascimento" />
+      </div>
+      <div class="col-md-3 mr-4">
+        <input type="text" name="cel" placeholder="+ () Celular" id="phone" />
+        <label>*Lembre-se de incluir o código do país e o código de área</label>
+      </div>
+      <div class="col-md-4">
+        <input type="text" name="tel" placeholder="+ () Telefone" id="phone" />
+        <label>*Lembre-se de incluir o código do país e o código de área</label>
+      </div>
+    </div>
+
+
+    <div class="col-md-12">
+      <div class="col-md-6 mr-5">
+        <input type="text" name="email" placeholder="Email" />
+      </div>
+      <div class="col-md-5">
+        <input type="text" name="profissao" placeholder="Profissão" id="profissao" />
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="col-md-4 mr-4">
+        <input type="text" name="instagram" placeholder="Instagram" id="instagram" />
+      </div>
+      <div class="col-md-3 mr-4">
+        <input type="text" name="camiseta" placeholder="Tamanho da camiseta (modelo unisex)" id="camiseta" />
+      </div>
+      <div class="col-md-4">
+        <input type="text" name="estadoCivil" placeholder="Estado Civil" id="estadoCivil" />
+      </div>
+    </div>
+
+    <input style="width: 948px;" class="mr-5" type="text" name="comoFicouSabendo" placeholder="Como você ficou sabendo sobre a Exchange do Bem?" id="comoFicouSabendo"/>
+
+
+    <div class="col-md-12 mb-4">
+      <div class="col-md-2 mr-3">
+        <input type="text" name="nascionalidade" placeholder="Nascionalidade" id="nascionalidade" />
+      </div>
+      <div class="col-md-3 mr-3">
+        <input type="text" name="passaporte" placeholder="Passaporte" id="passaporte" />
+      </div>
+      <div class="col-md-3 mr-3">
+        <input type="text" name="validadePassaporte" placeholder="Validade (se tiver)" id="validadePassaporte" />
+      </div>
+      <div class="col-md-3">
+        <input type="text" name="paisPassaporte" placeholder="País do passaporte (se tiver)" id="paisPassaporte" />
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="col-md-3">
+        <input type="text" name="cep" placeholder="CEP" name="cep" id="cep"/>
+      </div>
+      <div class="col-md-1" style="width: 50px;">
+        <i class="fa fa-search" aria-hidden="true" onClick="buscaCEP()"></i>
+      </div>
+        <div class="col-md-8">
+          <input type="text" name="cidadeEndereco" placeholder="Cidade" name="cidadeEndereco" id="cidadeEndereco" />
+        </div>
+     </div>
+
+
+    <div class="col-md-12">
+      <div class="col-md-5 mr-4">
+        <input type="text" name="endereco" placeholder="Endereço" id="endereco" name="endereco" />
+      </div>
+      <div class="col-md-2 mr-4">
+        <input type="text" name="numeroEndereco" placeholder="Numero" id="numeroEndereco" name="numeroEndereco" />
+      </div>
+      <div class="col-md-4">
+        <input type="text" name="bairroEndereco" placeholder="Bairro" id="bairroEndereco" name="bairroEndereco" />
+      </div>
+    </div>
+
+
+    <div class="col-md-12">
+      <div class="col-md-3 mr-4">
+        <input type="text" name="estadoEndereco" placeholder="Estado" id="estadoEndereco" name="estadoEndereco" />
+      </div>
+
+      <div class="col-md-4 mr-4">
+        <input type="text" name="paisEndereco" placeholder="País" id="paisEndereco" name="paisEndereco" />
+      </div>
+
+      <div class="col-md-4">
+        <input type="text" name="complementoEndereco" placeholder="Complemento" id="complementoEndereco" name="complementoEndereco" />
+      </div>
+    </div>
+
+
+    <span class="col-md-11 mb-2">Contato de emergência</span>
+  <div class="col-md-4 mr-4">
+    <input type="text" name="nomeContatoEmergencia" placeholder="Nome Completo" id="nomeContatoEmergencia" />
+  </div>
+  <div class="col-md-3 mr-4">
+    <input type="text" name="parentescoContatoEmergencia" placeholder="Parentesco" id="parentescoContatoEmergencia" />
+  </div>
+  <div class="col-md-4">
+    <input type="text" name="celularContatoEmergencia" placeholder="Celular" id="celularContatoEmergencia" />
+  </div>
+
+
+
     <input type="button" name="previous" class="previous action-button" value="Previous" />
     <input type="button" name="next" class="next action-button" value="Next" />
   </fieldset>
+
+
+
+
+
   <fieldset>
-    <h2 class="fs-title">Personal Details</h2>
+    <h2 class="fs-title">INFORMAÇÕES DE SAÚDE</h2>
     <h3 class="fs-subtitle">We will never sell it</h3>
-    <input type="text" name="fname" placeholder="First Name" />
-    <input type="text" name="lname" placeholder="Last Name" />
-    <input type="text" name="phone" placeholder="Phone" />
-    <textarea name="address" placeholder="Address"></textarea>
+    <div class="col-md-12 mb-5">
+    <div class="col-md-5 mr-3">
+      <h3>Apresenta algum problema de saúde do qual precisamos estar cientes?*</h3>
+      <div class="col-md-7">
+        <input type="radio" id="simProblemaSaude" name="ProblemaSaude" value="simProblemaSaude" checked="checked">
+        <label for="simProblemaSaude">Sim</label><br>
+      </div>
+      <div class="col-md-4">
+        <input type="radio" id="naoProblemaSaude" name="ProblemaSaude" value="naoProblemaSaude">
+        <label for="naoProblemaSaude">Não</label>
+      </div>
+
+      <div  id="ProblemaSaude" name="ProblemaSaude" >
+        <label class="mt-3">Conte um pouco sobre o seu problema de saúde* :</label>
+        <textarea></textarea>
+      </div>
+    </div>
+
+
+    <div class="col-md-5">
+      <h3>Faz uso de algum medicamento regularmente?*</h3>
+      <div class="col-md-7">
+        <input type="radio" id="simMedicamento" name="Medicamento" value="simMedicamento" checked="checked">
+        <label for="simMedicamento">Sim</label><br>
+      </div>
+      <div class="col-md-4">
+        <input type="radio" id="naoMedicamento" name="Medicamento" value="naoMedicamento">
+        <label for="naoMedicamento">Não</label>
+      </div>
+
+    <div style="padding-top: 83px; padding-left: 30px;" id="Medicamento" name="Medicamento" >
+      <label >Conte um pouco sobre a sua medicação* :</label>
+      <textarea></textarea>
+    </div>
+    </div>
+
+
+  </div>
+
+
+
+  <div class="col-md-12">
+    <div class="col-md-5 mr-5">
+      <h3>Possui restrição na alimentação?*</h3>
+      <div class="col-md-7">
+        <input type="radio" id="simrestricaoAlimentacao" name="restricaoAlimentacao" value="simrestricaoAlimentacao" checked="checked">
+        <label for="simrestricaoAlimentacao">Sim</label><br>
+      </div>
+      <div class="col-md-4">
+        <input type="radio" id="naorestricaoAlimentacao" name="restricaoAlimentacao" value="naorestricaoAlimentacao">
+        <label for="naorestricaoAlimentacao">Não</label>
+      </div>
+
+      <div  id="restricaoAlimentacao" name="restricaoAlimentacao" >
+        <label class="mt-3">Conte um pouco sobre a sua medicação* :</label>
+        <textarea></textarea>
+      </div>
+    </div>
+
+
+    <div class="col-md-5">
+      <h3>Pratica atividades físicas frequentemente?*</h3>
+      <div class="col-md-7">
+        <input type="radio" id="simAtividadeFisica" name="AtividadeFisica" value="simAtividadeFisica" checked="checked">
+        <label for="simAtividadeFisica">Sim</label><br>
+      </div>
+      <div class="col-md-4">
+        <input type="radio" id="naoAtividadeFisica" name="AtividadeFisica" value="naoAtividadeFisica">
+        <label for="naoAtividadeFisica">Não</label>
+      </div>
+
+      <div  id="AtividadeFisica" name="AtividadeFisica" >
+        <label class="mt-3">Conte um pouco sobre a sua medicação* :</label>
+        <textarea></textarea>
+    </div>
+
+
+    </div>
+
+  </div>
+
+
+
+
     <input type="button" name="previous" class="previous action-button" value="Previous" />
     <input type="submit" name="submit" class="submit action-button" value="Submit" />
   </fieldset>

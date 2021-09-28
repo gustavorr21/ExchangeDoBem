@@ -10,10 +10,10 @@ export class InscricaoComponent implements OnInit {
   FormGroup: FormGroup;
   constructor(private formBuilder: FormBuilder) {
     this.FormGroup = this.formBuilder.group({
-      pais: ['', Validators.required],
-      projeto: ['', Validators.required],
-      data: ['',  Validators.required],
-      qtdSemana: ['',  Validators.required]
+      // pais: ['', Validators.required],
+      // projeto: ['', Validators.required],
+      // data: ['',  Validators.required],
+      // qtdSemana: ['',  Validators.required]
   });
   }
 

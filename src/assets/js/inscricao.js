@@ -82,3 +82,75 @@ $(".submit").click(function(){
 
   // $.getScript('page_ajax.js');
 });
+
+
+function buscaCEP(){
+    //Nova variável "cep" somente com dígitos.
+    var cep = $("#cep").val().replace(/\D/g, '');
+
+    //Verifica se campo cep possui valor informado.
+    if (cep != "") {
+
+        //Expressão regular para validar o CEP.
+        var validacep = /^[0-9]{8}$/;
+
+        //Valida o formato do CEP.
+        if(validacep.test(cep)) {
+
+         //Consulta o webservice viacep.com.br/
+        $.getJSON("//viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+
+                if (!("erro" in dados)) {
+                    //Atualiza os campos com os valores da consulta.
+                    $("#endereco").val(dados.logradouro);
+                    $("#bairroEndereco").val(dados.bairro);
+                    $("#cidadeEndereco").val(dados.localidade);
+                    $("#estadoEndereco").val(dados.uf);
+                } //end if.
+                else {
+                    //CEP pesquisado não foi encontrado.
+                    console.log("CEP não encontrado.");
+                }
+            });
+        } //end if.
+        else {
+            console.log("Formato de CEP inválido.");
+        }
+    } //end if.
+};
+
+
+$(document).ready(function(){
+  $("#simProblemaSaude").click(function(evento){
+     $("#ProblemaSaude").css("display", "block");
+  });
+  $("#naoProblemaSaude").click(function(evento){
+     $("#ProblemaSaude").css("display", "none");
+  });
+
+
+  $("#simMedicamento").click(function(evento){
+    $("#Medicamento").css("display", "block");
+ });
+ $("#naoMedicamento").click(function(evento){
+    $("#Medicamento").css("display", "none");
+ });
+
+
+
+ $("#simrestricaoAlimentacao").click(function(evento){
+  $("#restricaoAlimentacao").css("display", "block");
+});
+$("#naorestricaoAlimentacao").click(function(evento){
+  $("#restricaoAlimentacao").css("display", "none");
+});
+
+
+$("#simAtividadeFisica").click(function(evento){
+  $("#AtividadeFisica").css("display", "block");
+});
+$("#naoAtividadeFisica").click(function(evento){
+  $("#AtividadeFisica").css("display", "none");
+});
+
+});
