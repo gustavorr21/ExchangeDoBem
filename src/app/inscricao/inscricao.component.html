@@ -8,15 +8,16 @@
   <!-- <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css"> -->
 </head>
 <body>
-<form [formGroup]="FormGroup" id="msform">
+<form id="msform">
   <!-- progressbar -->
   <ul id="progressbar">
     <li class="active">DADOS DO PROJETO</li>
     <li>DADOS PESSOAIS</li>
-    <li>Personal Details</li>
+    <li>INFORMAÇÕES DE SAÚDE</li>
+    <li>QUESTIONÁRIO</li>
   </ul>
   <!-- fieldsets -->
-  <fieldset>
+  <fieldset [formGroup]="FormGroup">
     <h2 class="fs-title">DADOS DO PROJETO</h2>
     <h3 class="fs-subtitle">This is step 1</h3>
     <div class="col-md-12">
@@ -67,25 +68,41 @@
 
 
 
-  <fieldset>
+  <fieldset [formGroup]="FormDadosPessoais">
     <h2 class="fs-title">DADOS PESSOAIS</h2>
     <h3 class="fs-subtitle">Your presence on the social network</h3>
 
 
     <div class="col-md-12">
       <div class="col-md-4 mr-4">
-        <input type="text" name="nome" placeholder="Nome" />
+        <input type="text" formControlName="nome" name="nome" placeholder="Nome" />
+        <div class="required "*ngIf="(FormDadosPessoais.controls['nome'].dirty || FormDadosPessoais.controls['nome'].touched)">
+          <span  *ngIf="FormDadosPessoais.controls.nome.errors">
+            Nome obrigatório
+          </span>
+        </div>
       </div>
       <div class="col-md-3 mr-4">
-        <select class="col-md-5" class="form-control">
+        <select class="col-md-5" formControlName="sexo" class="form-control">
           <option value="" selected disabled>Sexo</option>
           <option value="M">Masculino</option>
           <option value="F">Feminino</option>
           <option value="O">Outros</option>
         </select>
+        <div class="required "*ngIf="(FormDadosPessoais.controls['sexo'].dirty || FormDadosPessoais.controls['sexo'].touched)">
+          <span  *ngIf="FormDadosPessoais.controls.sexo.errors">
+            Sexo obrigatório
+          </span>
+        </div>
       </div>
       <div class="col-md-4">
-        <input type="text" name="cpf" class="cpf-mask" placeholder="CPF"/>
+        <input type="text" formControlName="cpf" name="cpf" class="cpf-mask" placeholder="CPF"/>
+        <div class="required "*ngIf="(FormDadosPessoais.controls['cpf'].dirty || FormDadosPessoais.controls['cpf'].touched)">
+          <span  *ngIf="FormDadosPessoais.controls.cpf.errors">
+            CPF obrigatório
+          </span>
+        </div>
+
       </div>
     </div>
 
@@ -95,118 +112,235 @@
 
     <div class="col-md-12 mb-3">
       <div class="col-md-4 mr-4">
-        <input type="date" name="dataNascimento" placeholder="Data de Nascimento" />
+        <input type="date" formControlName="dataNascimento" name="dataNascimento" placeholder="Data de Nascimento" />
+        <div class="required "*ngIf="(FormDadosPessoais.controls['dataNascimento'].dirty || FormDadosPessoais.controls['dataNascimento'].touched)">
+          <span  *ngIf="FormDadosPessoais.controls.dataNascimento.errors">
+            Data de Nascimento é obrigatório
+          </span>
+        </div>
       </div>
       <div class="col-md-3 mr-4">
-        <input type="text" name="cel" placeholder="+ () Celular" id="phone" />
+        <input type="text" name="cel" formControlName="cel" placeholder="+ () Celular" id="phone" />
         <label>*Lembre-se de incluir o código do país e o código de área</label>
+        <div class="required "*ngIf="(FormDadosPessoais.controls['cel'].dirty || FormDadosPessoais.controls['cel'].touched)">
+          <span  *ngIf="FormDadosPessoais.controls.cel.errors">
+            Celular obrigatório
+          </span>
+        </div>
       </div>
       <div class="col-md-4">
-        <input type="text" name="tel" placeholder="+ () Telefone" id="phone" />
+        <input type="text" name="telefone" formControlName="telefone" placeholder="+ () Telefone" id="phone" />
         <label>*Lembre-se de incluir o código do país e o código de área</label>
+        <div class="required "*ngIf="(FormDadosPessoais.controls['telefone'].dirty || FormDadosPessoais.controls['telefone'].touched)">
+          <span  *ngIf="FormDadosPessoais.controls.telefone.errors">
+            Telefone obrigatório
+          </span>
+        </div>
       </div>
     </div>
 
 
     <div class="col-md-12">
       <div class="col-md-6 mr-5">
-        <input type="text" name="email" placeholder="Email" />
+        <input type="text" name="email" formControlName="email" placeholder="Email" />
+        <div class="required "*ngIf="(FormDadosPessoais.controls['email'].dirty || FormDadosPessoais.controls['email'].touched)">
+          <span  *ngIf="FormDadosPessoais.controls.email.errors">
+            Email obrigatório
+          </span>
+        </div>
       </div>
       <div class="col-md-5">
-        <input type="text" name="profissao" placeholder="Profissão" id="profissao" />
+        <input type="text" name="profissao" formControlName="profissao" placeholder="Profissão" id="profissao" />
+        <div class="required "*ngIf="(FormDadosPessoais.controls['profissao'].dirty || FormDadosPessoais.controls['profissao'].touched)">
+          <span  *ngIf="FormDadosPessoais.controls.profissao.errors">
+            Profissão obrigatório
+          </span>
+        </div>
       </div>
     </div>
 
     <div class="col-md-12">
       <div class="col-md-4 mr-4">
-        <input type="text" name="instagram" placeholder="Instagram" id="instagram" />
+        <input type="text" name="instagram"  formControlName="instagram" placeholder="Instagram" id="instagram" />
+        <div class="required "*ngIf="(FormDadosPessoais.controls['instagram'].dirty || FormDadosPessoais.controls['instagram'].touched)">
+          <span  *ngIf="FormDadosPessoais.controls.instagram.errors">
+            Instagram obrigatório
+          </span>
+        </div>
       </div>
       <div class="col-md-3 mr-4">
-        <input type="text" name="camiseta" placeholder="Tamanho da camiseta (modelo unisex)" id="camiseta" />
+        <input type="text" name="camiseta" formControlName="tamanhoCamiseta"  placeholder="Tamanho da camiseta (modelo unisex)" id="camiseta" />
+        <div class="required "*ngIf="(FormDadosPessoais.controls['tamanhoCamiseta'].dirty || FormDadosPessoais.controls['tamanhoCamiseta'].touched)">
+          <span  *ngIf="FormDadosPessoais.controls.tamanhoCamiseta.errors">
+            Tamanho da camiseta obrigatório
+          </span>
+        </div>
       </div>
       <div class="col-md-4">
-        <input type="text" name="estadoCivil" placeholder="Estado Civil" id="estadoCivil" />
+        <input type="text" name="estadoCivil" formControlName="estadoCivil" placeholder="Estado Civil" id="estadoCivil" />
+        <div class="required "*ngIf="(FormDadosPessoais.controls['estadoCivil'].dirty || FormDadosPessoais.controls['estadoCivil'].touched)">
+          <span  *ngIf="FormDadosPessoais.controls.estadoCivil.errors">
+            Estado civil obrigatório
+          </span>
+        </div>
       </div>
     </div>
 
-    <input style="width: 948px;" class="mr-5" type="text" name="comoFicouSabendo" placeholder="Como você ficou sabendo sobre a Exchange do Bem?" id="comoFicouSabendo"/>
+    <input style="width: 948px;" class="mr-5" type="text"  formControlName="ficouSabendo"  name="comoFicouSabendo" placeholder="Como você ficou sabendo sobre a Exchange do Bem?" id="comoFicouSabendo"/>
+    <div class="required "*ngIf="(FormDadosPessoais.controls['ficouSabendo'].dirty || FormDadosPessoais.controls['ficouSabendo'].touched)">
+      <span  *ngIf="FormDadosPessoais.controls.ficouSabendo.errors">
+        Como ficou sabendo sobre a Exchange é obrigatório
+      </span>
+    </div>
 
 
     <div class="col-md-12 mb-4">
       <div class="col-md-2 mr-3">
-        <input type="text" name="nascionalidade" placeholder="Nascionalidade" id="nascionalidade" />
+        <input type="text" name="nascionalidade"  formControlName="nascionalidade"  placeholder="Nascionalidade" id="nascionalidade" />
+        <div class="required "*ngIf="(FormDadosPessoais.controls['nascionalidade'].dirty || FormDadosPessoais.controls['nascionalidade'].touched)">
+          <span  *ngIf="FormDadosPessoais.controls.nascionalidade.errors">
+            Nascionalidade obrigatório
+          </span>
+        </div>
       </div>
       <div class="col-md-3 mr-3">
-        <input type="text" name="passaporte" placeholder="Passaporte" id="passaporte" />
+        <input type="text" name="passaporte"  formControlName="passaporte" placeholder="Passaporte" id="passaporte" />
+        <div class="required "*ngIf="(FormDadosPessoais.controls['passaporte'].dirty || FormDadosPessoais.controls['passaporte'].touched)">
+          <span  *ngIf="FormDadosPessoais.controls.passaporte.errors">
+            Passaporte obrigatório
+          </span>
+        </div>
       </div>
       <div class="col-md-3 mr-3">
-        <input type="text" name="validadePassaporte" placeholder="Validade (se tiver)" id="validadePassaporte" />
+        <input type="text" name="validadePassaporte"  formControlName="validadePassaporte" placeholder="Validade (se tiver)" id="validadePassaporte" />
+        <div class="required "*ngIf="(FormDadosPessoais.controls['validadePassaporte'].dirty || FormDadosPessoais.controls['validadePassaporte'].touched)">
+          <span  *ngIf="FormDadosPessoais.controls.validadePassaporte.errors">
+            Validade passaporte obrigatório
+          </span>
+        </div>
       </div>
       <div class="col-md-3">
-        <input type="text" name="paisPassaporte" placeholder="País do passaporte (se tiver)" id="paisPassaporte" />
+        <input type="text" name="paisPassaporte"  formControlName="paisPassaporte" placeholder="País do passaporte (se tiver)" id="paisPassaporte" />
+        <div class="required "*ngIf="(FormDadosPessoais.controls['paisPassaporte'].dirty || FormDadosPessoais.controls['paisPassaporte'].touched)">
+          <span  *ngIf="FormDadosPessoais.controls.paisPassaporte.errors">
+            Pais passaporte obrigatório
+          </span>
+        </div>
       </div>
     </div>
 
     <div class="col-md-12">
       <div class="col-md-3">
-        <input type="text" name="cep" placeholder="CEP" name="cep" id="cep"/>
+        <input type="text" name="cep" placeholder="CEP" formControlName="cep"  name="cep" id="cep"/>
+        <div class="required "*ngIf="(FormDadosPessoais.controls['cep'].dirty || FormDadosPessoais.controls['cep'].touched)">
+          <span  *ngIf="FormDadosPessoais.controls.cep.errors">
+            CEP obrigatório
+          </span>
+        </div>
       </div>
       <div class="col-md-1" style="width: 50px;">
         <i class="fa fa-search" aria-hidden="true" onClick="buscaCEP()"></i>
       </div>
         <div class="col-md-8">
-          <input type="text" name="cidadeEndereco" placeholder="Cidade" name="cidadeEndereco" id="cidadeEndereco" />
+          <input type="text" name="cidadeEndereco" formControlName="cidadeEndereco"  placeholder="Cidade" name="cidadeEndereco" id="cidadeEndereco" />
+          <div class="required "*ngIf="(FormDadosPessoais.controls['cidadeEndereco'].dirty || FormDadosPessoais.controls['cidadeEndereco'].touched)">
+            <span  *ngIf="FormDadosPessoais.controls.cidadeEndereco.errors">
+              Cidade obrigatório
+            </span>
+          </div>
         </div>
      </div>
 
 
     <div class="col-md-12">
       <div class="col-md-5 mr-4">
-        <input type="text" name="endereco" placeholder="Endereço" id="endereco" name="endereco" />
+        <input type="text" name="endereco" placeholder="Endereço" formControlName="endereco"  id="endereco" name="endereco" />
+        <div class="required "*ngIf="(FormDadosPessoais.controls['endereco'].dirty || FormDadosPessoais.controls['endereco'].touched)">
+          <span  *ngIf="FormDadosPessoais.controls.endereco.errors">
+            Endereço obrigatório
+          </span>
+        </div>
       </div>
       <div class="col-md-2 mr-4">
-        <input type="text" name="numeroEndereco" placeholder="Numero" id="numeroEndereco" name="numeroEndereco" />
+        <input type="text" name="numeroEndereco" placeholder="Numero" id="numeroEndereco" formControlName="numeroEndereco"  name="numeroEndereco" />
+        <div class="required "*ngIf="(FormDadosPessoais.controls['numeroEndereco'].dirty || FormDadosPessoais.controls['numeroEndereco'].touched)">
+          <span  *ngIf="FormDadosPessoais.controls.numeroEndereco.errors">
+            Numero obrigatório
+          </span>
+        </div>
       </div>
       <div class="col-md-4">
-        <input type="text" name="bairroEndereco" placeholder="Bairro" id="bairroEndereco" name="bairroEndereco" />
+        <input type="text" name="bairroEndereco" placeholder="Bairro" id="bairroEndereco"  formControlName="bairroEndereco" name="bairroEndereco" />
+        <div class="required "*ngIf="(FormDadosPessoais.controls['bairroEndereco'].dirty || FormDadosPessoais.controls['bairroEndereco'].touched)">
+          <span  *ngIf="FormDadosPessoais.controls.bairroEndereco.errors">
+            Bairro obrigatório
+          </span>
+        </div>
       </div>
     </div>
 
 
     <div class="col-md-12">
       <div class="col-md-3 mr-4">
-        <input type="text" name="estadoEndereco" placeholder="Estado" id="estadoEndereco" name="estadoEndereco" />
+        <input type="text" name="estadoEndereco" placeholder="Estado" id="estadoEndereco"  formControlName="estadoEndereco"  name="estadoEndereco" />
+        <div class="required "*ngIf="(FormDadosPessoais.controls['estadoEndereco'].dirty || FormDadosPessoais.controls['estadoEndereco'].touched)">
+          <span  *ngIf="FormDadosPessoais.controls.estadoEndereco.errors">
+            Estado obrigatório
+          </span>
+        </div>
       </div>
 
       <div class="col-md-4 mr-4">
-        <input type="text" name="paisEndereco" placeholder="País" id="paisEndereco" name="paisEndereco" />
+        <input type="text" name="paisEndereco" placeholder="País" id="paisEndereco"  formControlName="paisEndereco" name="paisEndereco" />
+        <div class="required "*ngIf="(FormDadosPessoais.controls['paisEndereco'].dirty || FormDadosPessoais.controls['paisEndereco'].touched)">
+          <span  *ngIf="FormDadosPessoais.controls.paisEndereco.errors">
+            Pais obrigatório
+          </span>
+        </div>
       </div>
 
       <div class="col-md-4">
-        <input type="text" name="complementoEndereco" placeholder="Complemento" id="complementoEndereco" name="complementoEndereco" />
+        <input type="text" name="complementoEndereco" placeholder="Complemento" formControlName="complementoEndereco"  id="complementoEndereco" name="complementoEndereco" />
+        <div class="required "*ngIf="(FormDadosPessoais.controls['complementoEndereco'].dirty || FormDadosPessoais.controls['complementoEndereco'].touched)">
+          <span  *ngIf="FormDadosPessoais.controls.complementoEndereco.errors">
+            Complemento Endereço obrigatório
+          </span>
+        </div>
       </div>
     </div>
 
 
     <span class="col-md-11 mb-2">Contato de emergência</span>
   <div class="col-md-4 mr-4">
-    <input type="text" name="nomeContatoEmergencia" placeholder="Nome Completo" id="nomeContatoEmergencia" />
+    <input type="text" name="nomeContatoEmergencia" placeholder="Nome Completo" formControlName="nomeContatoEmergencia"  id="nomeContatoEmergencia" />
+    <div class="required "*ngIf="(FormDadosPessoais.controls['nomeContatoEmergencia'].dirty || FormDadosPessoais.controls['nomeContatoEmergencia'].touched)">
+      <span  *ngIf="FormDadosPessoais.controls.nomeContatoEmergencia.errors">
+        Nome Contato de emergência obrigatório
+      </span>
+    </div>
   </div>
   <div class="col-md-3 mr-4">
-    <input type="text" name="parentescoContatoEmergencia" placeholder="Parentesco" id="parentescoContatoEmergencia" />
+    <input type="text" name="parentescoContatoEmergencia" placeholder="Parentesco" formControlName="parentescoContatoEmergencia" id="parentescoContatoEmergencia" />
+    <div class="required "*ngIf="(FormDadosPessoais.controls['parentescoContatoEmergencia'].dirty || FormDadosPessoais.controls['parentescoContatoEmergencia'].touched)">
+      <span  *ngIf="FormDadosPessoais.controls.parentescoContatoEmergencia.errors">
+        Parentesco de emergência obrigatório
+      </span>
+    </div>
   </div>
   <div class="col-md-4">
-    <input type="text" name="celularContatoEmergencia" placeholder="Celular" id="celularContatoEmergencia" />
+    <input type="text" name="celularContatoEmergencia" placeholder="Celular"  formControlName="celularContatoEmergencia" id="celularContatoEmergencia" />
+    <div class="required "*ngIf="(FormDadosPessoais.controls['celularContatoEmergencia'].dirty || FormDadosPessoais.controls['celularContatoEmergencia'].touched)">
+      <span  *ngIf="FormDadosPessoais.controls.celularContatoEmergencia.errors">
+        Celular de emergência obrigatório
+      </span>
+    </div>
   </div>
 
 
 
     <input type="button" name="previous" class="previous action-button" value="Previous" />
-    <input type="button" name="next" class="next action-button" value="Next" />
+    <input type="button" name="next" class="next action-button" [disabled]="!FormDadosPessoais.valid" value="Next" />
   </fieldset>
-
-
-
 
 
   <fieldset>
@@ -299,6 +433,17 @@
     <input type="button" name="previous" class="previous action-button" value="Previous" />
     <input type="submit" name="submit" class="submit action-button" value="Submit" />
   </fieldset>
+
+
+  <fieldset>
+    <h2 class="fs-title">QUESTIONÁRIO</h2>
+    <h3 class="fs-subtitle">This is step 1</h3>
+
+
+      <input type="button" name="next" class="next action-button"  value="Next" />
+
+  </fieldset>
+
 </form>
 
 </body>
