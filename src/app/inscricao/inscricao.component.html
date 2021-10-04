@@ -62,7 +62,7 @@
         </span>
       </div>
 
-      <input type="button" name="next" class="next action-button" (click)="postar()" [disabled]="!FormGroup.valid" value="Next" />
+      <input type="button" name="next" class="next action-button" (click)="postar()" value="Next" />
 
   </fieldset>
 
@@ -301,11 +301,11 @@
 
       <div class="col-md-4">
         <input type="text" name="complementoEndereco" placeholder="Complemento" formControlName="complementoEndereco"  id="complementoEndereco" name="complementoEndereco" />
-        <div class="required "*ngIf="(FormDadosPessoais.controls['complementoEndereco'].dirty || FormDadosPessoais.controls['complementoEndereco'].touched)">
+        <!-- <div class="required "*ngIf="(FormDadosPessoais.controls['complementoEndereco'].dirty || FormDadosPessoais.controls['complementoEndereco'].touched)">
           <span  *ngIf="FormDadosPessoais.controls.complementoEndereco.errors">
             Complemento Endereço obrigatório
           </span>
-        </div>
+        </div> -->
       </div>
     </div>
 
@@ -339,7 +339,8 @@
 
 
     <input type="button" name="previous" class="previous action-button" value="Previous" />
-    <input type="button" name="next" class="next action-button" [disabled]="!FormDadosPessoais.valid" value="Next" />
+    <input type="button" name="next" class="next action-button"value="Next" />
+    <!-- [disabled]="!FormDadosPessoais.valid"  -->
   </fieldset>
 
 
@@ -431,7 +432,8 @@
 
 
     <input type="button" name="previous" class="previous action-button" value="Previous" />
-    <input type="submit" name="submit" class="submit action-button" value="Submit" />
+    <input type="button" name="next" class="next action-button"value="Next" />
+
   </fieldset>
 
 
@@ -439,9 +441,54 @@
     <h2 class="fs-title">QUESTIONÁRIO</h2>
     <h3 class="fs-subtitle">This is step 1</h3>
 
+<div>
+  Nos conte um pouco mais sobre você, detalhando sua escolaridade e experiência profissional.*
+  <textarea></textarea>
+</div>
+<div >
+  O que faz você querer ser voluntário nesse projeto e como você pode contribuir?*
+  <textarea></textarea>
+</div>
 
-      <input type="button" name="next" class="next action-button"  value="Next" />
+<div >
+  Você já fez algum tipo de trabalho voluntário? Se sim, aonde e o que você fazia?*
+  <textarea></textarea>
+</div>
 
+
+<div >
+  Você já fez algum intercâmbio (social, cursos de idioma, acadêmico, etc)?
+  <textarea></textarea>
+</div>
+<div>Como você classifica seu nível de inglês nos critérios abaixo?*</div>
+
+<div >Tem conhecimento em alguma outra língua?*
+  <textarea></textarea>
+</div>
+
+<div >
+  Quais são suas principais habilidades e quais atividades você pode realizar?*
+  <textarea></textarea>
+</div>
+
+<div >
+  Tem alguma observação que você queira acrescentar?*
+  <textarea></textarea>
+</div>
+
+<div >Após o envio do formulário, um dos nossos consultores ligará para você explicando os próximos passos. Qual seria o melhor horário para entrarmos em contato (horário comercial)?*
+  <textarea></textarea>
+</div>
+
+
+<div >
+  Cupom de desconto
+  <input type="text" class="col-md-5">
+</div>
+<div>
+    <input type="button" name="previous" class="previous action-button" value="Previous" />
+      <input type="submit" name="submit" class="submit action-button" value="Submit" />
+    </div>
   </fieldset>
 
 </form>

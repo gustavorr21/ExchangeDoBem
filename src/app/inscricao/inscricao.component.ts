@@ -41,7 +41,7 @@ export class InscricaoComponent implements OnInit {
      bairroEndereco: ['',  Validators.required],
      estadoEndereco: ['',  Validators.required],
      paisEndereco: ['',  Validators.required],
-     complementoEndereco: ['',  Validators.required],
+    //  complementoEndereco: ['',  Validators.required],
      nomeContatoEmergencia: ['',  Validators.required],
      parentescoContatoEmergencia: ['',  Validators.required],
      celularContatoEmergencia: ['',  Validators.required],
