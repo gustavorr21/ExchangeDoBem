@@ -11,6 +11,7 @@
   },
   "private": true,
   "dependencies": {
+    "@akveo/ng2-completer": "^9.0.1",
     "@angular/animations": "~11.2.0",
     "@angular/cdk": "^11.2.13",
     "@angular/common": "~11.2.0",
@@ -27,14 +28,17 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "bootstrap": "^5.1.1",
+    "firebase": "^7.0 || ^8.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.6.0",
     "jquery-mask-plugin": "^1.14.16",
+    "ng2-completer": "^9.0.1",
+    "ng2-smart-table": "^1.7.2",
     "popper.js": "^1.16.1",
     "rxjs": "~6.6.0",
+    "rxjs-compat": "^6.6.7",
     "tslib": "^2.0.0",
-    "zone.js": "~0.11.3",
-    "firebase": "^7.0 || ^8.0"
+    "zone.js": "~0.11.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1102.0",
