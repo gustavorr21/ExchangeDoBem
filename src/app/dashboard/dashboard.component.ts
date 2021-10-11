@@ -6,8 +6,6 @@ import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { Observable } from 'rxjs';
 import { InscricaoService } from 'Service/Services/inscricao.service';
-
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -35,17 +33,29 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     },
     columns: {
 
-      id: {
-        title: 'ID'
+      nome: {
+        title: 'Nome'
       },
-      name: {
-        title: 'Full Name'
+      sexo: {
+        title: 'Sexo'
       },
-      username: {
-        title: 'User Name'
+      cpf: {
+        title: 'CPF'
       },
       email: {
         title: 'Email'
+      },
+      profissao: {
+        title: 'profissao'
+      },
+      pais: {
+        title: 'Pais de Destino'
+      },
+      problemaSaude: {
+        title: 'Problema Saúde'
+      },
+      restricaoAlimentacao: {
+        title: 'Restrição Alimentação'
       }
     }
   };

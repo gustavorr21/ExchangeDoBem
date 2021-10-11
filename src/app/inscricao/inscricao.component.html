@@ -8,7 +8,7 @@
   <!-- <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css"> -->
 </head>
 <body>
-<form id="msform">
+<form id="msform" [formGroup]="FormCompleto">
   <!-- progressbar -->
   <ul id="progressbar">
     <li class="active">DADOS DO PROJETO</li>
@@ -17,29 +17,33 @@
     <li>QUESTIONÁRIO</li>
   </ul>
   <!-- fieldsets -->
-  <fieldset [formGroup]="FormGroup">
+
+
+  <fieldset >
+    <!-- [formGroup]="FormGroup" -->
+
     <h2 class="fs-title">DADOS DO PROJETO</h2>
     <h3 class="fs-subtitle">This is step 1</h3>
     <div class="col-md-12">
       <input type="text" formControlName="pais" name="pais" placeholder="Pais" />
-      <div class="required "*ngIf="(FormGroup.controls['pais'].dirty || FormGroup.controls['pais'].touched)">
-        <span  *ngIf="FormGroup.controls.pais.errors">
+      <div class="required "*ngIf="(FormCompleto.controls['pais'].dirty || FormCompleto.controls['pais'].touched)">
+        <span  *ngIf="FormCompleto.controls.pais.errors">
           Pais obrigatório
         </span>
       </div>
     </div>
     <div class="col-md-12">
     <input type="text" formControlName="projeto" name="projeto" placeholder="Projeto" />
-    <div class="required" style="margin-bottom: 5px" *ngIf="(FormGroup.controls['projeto'].dirty || FormGroup.controls['projeto'].touched)">
-      <label  *ngIf="FormGroup.controls.projeto.errors">
+    <div class="required" style="margin-bottom: 5px" *ngIf="(FormCompleto.controls['projeto'].dirty || FormCompleto.controls['projeto'].touched)">
+      <label  *ngIf="FormCompleto.controls.projeto.errors">
         Projeto obrigatório
       </label>
     </div>
   </div>
 
     <input class="col-md-4" type="date" formControlName="data" name="data" />
-    <div style="margin-bottom: 5px" *ngIf="(FormGroup.controls['data'].dirty || FormGroup.controls['data'].touched)">
-      <span class="required col-md-2" style="width: 110px;" *ngIf="FormGroup.controls.data.errors">
+    <div style="margin-bottom: 5px" *ngIf="(FormCompleto.controls['data'].dirty || FormCompleto.controls['data'].touched)">
+      <span class="required col-md-2" style="width: 110px;" *ngIf="FormCompleto.controls.data.errors">
         Data obrigatória
       </span>
     </div>
@@ -56,19 +60,20 @@
         <option value="9">9</option>
         <option value="10">10 ou mais</option>
       </select>
-      <div style="margin-bottom: 5px" *ngIf="(FormGroup.controls['qtdSemana'].dirty || FormGroup.controls['qtdSemana'].touched)">
-        <span class="required" *ngIf="FormGroup.controls.qtdSemana.errors">
+      <div style="margin-bottom: 5px" *ngIf="(FormCompleto.controls['qtdSemana'].dirty || FormCompleto.controls['qtdSemana'].touched)">
+        <span class="required" *ngIf="FormCompleto.controls.qtdSemana.errors">
           Campo obrigatório
         </span>
       </div>
 
-      <input type="button" name="next" class="next action-button" (click)="postar()" value="Next" />
+      <input type="button" name="next"  class="next action-button" (click)="postar()" value="Next" />
 
   </fieldset>
 
 
 
-  <fieldset [formGroup]="FormDadosPessoais">
+  <fieldset>
+    <!-- [formGroup]="FormDadosPessoais" -->
     <h2 class="fs-title">DADOS PESSOAIS</h2>
     <h3 class="fs-subtitle">Your presence on the social network</h3>
 
@@ -76,8 +81,8 @@
     <div class="col-md-12">
       <div class="col-md-4 mr-4">
         <input type="text" formControlName="nome" name="nome" placeholder="Nome" />
-        <div class="required "*ngIf="(FormDadosPessoais.controls['nome'].dirty || FormDadosPessoais.controls['nome'].touched)">
-          <span  *ngIf="FormDadosPessoais.controls.nome.errors">
+        <div class="required "*ngIf="(FormCompleto.controls['nome'].dirty || FormCompleto.controls['nome'].touched)">
+          <span  *ngIf="FormCompleto.controls.nome.errors">
             Nome obrigatório
           </span>
         </div>
@@ -89,16 +94,16 @@
           <option value="F">Feminino</option>
           <option value="O">Outros</option>
         </select>
-        <div class="required "*ngIf="(FormDadosPessoais.controls['sexo'].dirty || FormDadosPessoais.controls['sexo'].touched)">
-          <span  *ngIf="FormDadosPessoais.controls.sexo.errors">
+        <div class="required "*ngIf="(FormCompleto.controls['sexo'].dirty || FormCompleto.controls['sexo'].touched)">
+          <span  *ngIf="FormCompleto.controls.sexo.errors">
             Sexo obrigatório
           </span>
         </div>
       </div>
       <div class="col-md-4">
         <input type="text" formControlName="cpf" name="cpf" class="cpf-mask" placeholder="CPF"/>
-        <div class="required "*ngIf="(FormDadosPessoais.controls['cpf'].dirty || FormDadosPessoais.controls['cpf'].touched)">
-          <span  *ngIf="FormDadosPessoais.controls.cpf.errors">
+        <div class="required "*ngIf="(FormCompleto.controls['cpf'].dirty || FormCompleto.controls['cpf'].touched)">
+          <span  *ngIf="FormCompleto.controls.cpf.errors">
             CPF obrigatório
           </span>
         </div>
@@ -113,8 +118,8 @@
     <div class="col-md-12 mb-3">
       <div class="col-md-4 mr-4">
         <input type="date" formControlName="dataNascimento" name="dataNascimento" placeholder="Data de Nascimento" />
-        <div class="required "*ngIf="(FormDadosPessoais.controls['dataNascimento'].dirty || FormDadosPessoais.controls['dataNascimento'].touched)">
-          <span  *ngIf="FormDadosPessoais.controls.dataNascimento.errors">
+        <div class="required "*ngIf="(FormCompleto.controls['dataNascimento'].dirty || FormCompleto.controls['dataNascimento'].touched)">
+          <span  *ngIf="FormCompleto.controls.dataNascimento.errors">
             Data de Nascimento é obrigatório
           </span>
         </div>
@@ -122,8 +127,8 @@
       <div class="col-md-3 mr-4">
         <input type="text" name="cel" formControlName="cel" placeholder="+ () Celular" id="phone" />
         <label>*Lembre-se de incluir o código do país e o código de área</label>
-        <div class="required "*ngIf="(FormDadosPessoais.controls['cel'].dirty || FormDadosPessoais.controls['cel'].touched)">
-          <span  *ngIf="FormDadosPessoais.controls.cel.errors">
+        <div class="required "*ngIf="(FormCompleto.controls['cel'].dirty || FormCompleto.controls['cel'].touched)">
+          <span  *ngIf="FormCompleto.controls.cel.errors">
             Celular obrigatório
           </span>
         </div>
@@ -131,8 +136,8 @@
       <div class="col-md-4">
         <input type="text" name="telefone" formControlName="telefone" placeholder="+ () Telefone" id="phone" />
         <label>*Lembre-se de incluir o código do país e o código de área</label>
-        <div class="required "*ngIf="(FormDadosPessoais.controls['telefone'].dirty || FormDadosPessoais.controls['telefone'].touched)">
-          <span  *ngIf="FormDadosPessoais.controls.telefone.errors">
+        <div class="required "*ngIf="(FormCompleto.controls['telefone'].dirty || FormCompleto.controls['telefone'].touched)">
+          <span  *ngIf="FormCompleto.controls.telefone.errors">
             Telefone obrigatório
           </span>
         </div>
@@ -143,16 +148,16 @@
     <div class="col-md-12">
       <div class="col-md-6 mr-5">
         <input type="text" name="email" formControlName="email" placeholder="Email" />
-        <div class="required "*ngIf="(FormDadosPessoais.controls['email'].dirty || FormDadosPessoais.controls['email'].touched)">
-          <span  *ngIf="FormDadosPessoais.controls.email.errors">
+        <div class="required "*ngIf="(FormCompleto.controls['email'].dirty || FormCompleto.controls['email'].touched)">
+          <span  *ngIf="FormCompleto.controls.email.errors">
             Email obrigatório
           </span>
         </div>
       </div>
       <div class="col-md-5">
         <input type="text" name="profissao" formControlName="profissao" placeholder="Profissão" id="profissao" />
-        <div class="required "*ngIf="(FormDadosPessoais.controls['profissao'].dirty || FormDadosPessoais.controls['profissao'].touched)">
-          <span  *ngIf="FormDadosPessoais.controls.profissao.errors">
+        <div class="required "*ngIf="(FormCompleto.controls['profissao'].dirty || FormCompleto.controls['profissao'].touched)">
+          <span  *ngIf="FormCompleto.controls.profissao.errors">
             Profissão obrigatório
           </span>
         </div>
@@ -162,24 +167,24 @@
     <div class="col-md-12">
       <div class="col-md-4 mr-4">
         <input type="text" name="instagram"  formControlName="instagram" placeholder="Instagram" id="instagram" />
-        <div class="required "*ngIf="(FormDadosPessoais.controls['instagram'].dirty || FormDadosPessoais.controls['instagram'].touched)">
-          <span  *ngIf="FormDadosPessoais.controls.instagram.errors">
+        <div class="required "*ngIf="(FormCompleto.controls['instagram'].dirty || FormCompleto.controls['instagram'].touched)">
+          <span  *ngIf="FormCompleto.controls.instagram.errors">
             Instagram obrigatório
           </span>
         </div>
       </div>
       <div class="col-md-3 mr-4">
         <input type="text" name="camiseta" formControlName="tamanhoCamiseta"  placeholder="Tamanho da camiseta (modelo unisex)" id="camiseta" />
-        <div class="required "*ngIf="(FormDadosPessoais.controls['tamanhoCamiseta'].dirty || FormDadosPessoais.controls['tamanhoCamiseta'].touched)">
-          <span  *ngIf="FormDadosPessoais.controls.tamanhoCamiseta.errors">
+        <div class="required "*ngIf="(FormCompleto.controls['tamanhoCamiseta'].dirty || FormCompleto.controls['tamanhoCamiseta'].touched)">
+          <span  *ngIf="FormCompleto.controls.tamanhoCamiseta.errors">
             Tamanho da camiseta obrigatório
           </span>
         </div>
       </div>
       <div class="col-md-4">
         <input type="text" name="estadoCivil" formControlName="estadoCivil" placeholder="Estado Civil" id="estadoCivil" />
-        <div class="required "*ngIf="(FormDadosPessoais.controls['estadoCivil'].dirty || FormDadosPessoais.controls['estadoCivil'].touched)">
-          <span  *ngIf="FormDadosPessoais.controls.estadoCivil.errors">
+        <div class="required "*ngIf="(FormCompleto.controls['estadoCivil'].dirty || FormCompleto.controls['estadoCivil'].touched)">
+          <span  *ngIf="FormCompleto.controls.estadoCivil.errors">
             Estado civil obrigatório
           </span>
         </div>
@@ -187,8 +192,8 @@
     </div>
 
     <input style="width: 948px;" class="mr-5" type="text"  formControlName="ficouSabendo"  name="comoFicouSabendo" placeholder="Como você ficou sabendo sobre a Exchange do Bem?" id="comoFicouSabendo"/>
-    <div class="required "*ngIf="(FormDadosPessoais.controls['ficouSabendo'].dirty || FormDadosPessoais.controls['ficouSabendo'].touched)">
-      <span  *ngIf="FormDadosPessoais.controls.ficouSabendo.errors">
+    <div class="required "*ngIf="(FormCompleto.controls['ficouSabendo'].dirty || FormCompleto.controls['ficouSabendo'].touched)">
+      <span  *ngIf="FormCompleto.controls.ficouSabendo.errors">
         Como ficou sabendo sobre a Exchange é obrigatório
       </span>
     </div>
@@ -197,32 +202,32 @@
     <div class="col-md-12 mb-4">
       <div class="col-md-2 mr-3">
         <input type="text" name="nascionalidade"  formControlName="nascionalidade"  placeholder="Nascionalidade" id="nascionalidade" />
-        <div class="required "*ngIf="(FormDadosPessoais.controls['nascionalidade'].dirty || FormDadosPessoais.controls['nascionalidade'].touched)">
-          <span  *ngIf="FormDadosPessoais.controls.nascionalidade.errors">
+        <div class="required "*ngIf="(FormCompleto.controls['nascionalidade'].dirty || FormCompleto.controls['nascionalidade'].touched)">
+          <span  *ngIf="FormCompleto.controls.nascionalidade.errors">
             Nascionalidade obrigatório
           </span>
         </div>
       </div>
       <div class="col-md-3 mr-3">
         <input type="text" name="passaporte"  formControlName="passaporte" placeholder="Passaporte" id="passaporte" />
-        <div class="required "*ngIf="(FormDadosPessoais.controls['passaporte'].dirty || FormDadosPessoais.controls['passaporte'].touched)">
-          <span  *ngIf="FormDadosPessoais.controls.passaporte.errors">
+        <div class="required "*ngIf="(FormCompleto.controls['passaporte'].dirty || FormCompleto.controls['passaporte'].touched)">
+          <span  *ngIf="FormCompleto.controls.passaporte.errors">
             Passaporte obrigatório
           </span>
         </div>
       </div>
       <div class="col-md-3 mr-3">
         <input type="text" name="validadePassaporte"  formControlName="validadePassaporte" placeholder="Validade (se tiver)" id="validadePassaporte" />
-        <div class="required "*ngIf="(FormDadosPessoais.controls['validadePassaporte'].dirty || FormDadosPessoais.controls['validadePassaporte'].touched)">
-          <span  *ngIf="FormDadosPessoais.controls.validadePassaporte.errors">
+        <div class="required "*ngIf="(FormCompleto.controls['validadePassaporte'].dirty || FormCompleto.controls['validadePassaporte'].touched)">
+          <span  *ngIf="FormCompleto.controls.validadePassaporte.errors">
             Validade passaporte obrigatório
           </span>
         </div>
       </div>
       <div class="col-md-3">
         <input type="text" name="paisPassaporte"  formControlName="paisPassaporte" placeholder="País do passaporte (se tiver)" id="paisPassaporte" />
-        <div class="required "*ngIf="(FormDadosPessoais.controls['paisPassaporte'].dirty || FormDadosPessoais.controls['paisPassaporte'].touched)">
-          <span  *ngIf="FormDadosPessoais.controls.paisPassaporte.errors">
+        <div class="required "*ngIf="(FormCompleto.controls['paisPassaporte'].dirty || FormCompleto.controls['paisPassaporte'].touched)">
+          <span  *ngIf="FormCompleto.controls.paisPassaporte.errors">
             Pais passaporte obrigatório
           </span>
         </div>
@@ -232,8 +237,8 @@
     <div class="col-md-12">
       <div class="col-md-3">
         <input type="text" name="cep" placeholder="CEP" formControlName="cep"  name="cep" id="cep"/>
-        <div class="required "*ngIf="(FormDadosPessoais.controls['cep'].dirty || FormDadosPessoais.controls['cep'].touched)">
-          <span  *ngIf="FormDadosPessoais.controls.cep.errors">
+        <div class="required "*ngIf="(FormCompleto.controls['cep'].dirty || FormCompleto.controls['cep'].touched)">
+          <span  *ngIf="FormCompleto.controls.cep.errors">
             CEP obrigatório
           </span>
         </div>
@@ -243,8 +248,8 @@
       </div>
         <div class="col-md-8">
           <input type="text" name="cidadeEndereco" formControlName="cidadeEndereco"  placeholder="Cidade" name="cidadeEndereco" id="cidadeEndereco" />
-          <div class="required "*ngIf="(FormDadosPessoais.controls['cidadeEndereco'].dirty || FormDadosPessoais.controls['cidadeEndereco'].touched)">
-            <span  *ngIf="FormDadosPessoais.controls.cidadeEndereco.errors">
+          <div class="required "*ngIf="(FormCompleto.controls['cidadeEndereco'].dirty || FormCompleto.controls['cidadeEndereco'].touched)">
+            <span  *ngIf="FormCompleto.controls.cidadeEndereco.errors">
               Cidade obrigatório
             </span>
           </div>
@@ -255,24 +260,24 @@
     <div class="col-md-12">
       <div class="col-md-5 mr-4">
         <input type="text" name="endereco" placeholder="Endereço" formControlName="endereco"  id="endereco" name="endereco" />
-        <div class="required "*ngIf="(FormDadosPessoais.controls['endereco'].dirty || FormDadosPessoais.controls['endereco'].touched)">
-          <span  *ngIf="FormDadosPessoais.controls.endereco.errors">
+        <div class="required "*ngIf="(FormCompleto.controls['endereco'].dirty || FormCompleto.controls['endereco'].touched)">
+          <span  *ngIf="FormCompleto.controls.endereco.errors">
             Endereço obrigatório
           </span>
         </div>
       </div>
       <div class="col-md-2 mr-4">
         <input type="text" name="numeroEndereco" placeholder="Numero" id="numeroEndereco" formControlName="numeroEndereco"  name="numeroEndereco" />
-        <div class="required "*ngIf="(FormDadosPessoais.controls['numeroEndereco'].dirty || FormDadosPessoais.controls['numeroEndereco'].touched)">
-          <span  *ngIf="FormDadosPessoais.controls.numeroEndereco.errors">
+        <div class="required "*ngIf="(FormCompleto.controls['numeroEndereco'].dirty || FormCompleto.controls['numeroEndereco'].touched)">
+          <span  *ngIf="FormCompleto.controls.numeroEndereco.errors">
             Numero obrigatório
           </span>
         </div>
       </div>
       <div class="col-md-4">
         <input type="text" name="bairroEndereco" placeholder="Bairro" id="bairroEndereco"  formControlName="bairroEndereco" name="bairroEndereco" />
-        <div class="required "*ngIf="(FormDadosPessoais.controls['bairroEndereco'].dirty || FormDadosPessoais.controls['bairroEndereco'].touched)">
-          <span  *ngIf="FormDadosPessoais.controls.bairroEndereco.errors">
+        <div class="required "*ngIf="(FormCompleto.controls['bairroEndereco'].dirty || FormCompleto.controls['bairroEndereco'].touched)">
+          <span  *ngIf="FormCompleto.controls.bairroEndereco.errors">
             Bairro obrigatório
           </span>
         </div>
@@ -283,8 +288,8 @@
     <div class="col-md-12">
       <div class="col-md-3 mr-4">
         <input type="text" name="estadoEndereco" placeholder="Estado" id="estadoEndereco"  formControlName="estadoEndereco"  name="estadoEndereco" />
-        <div class="required "*ngIf="(FormDadosPessoais.controls['estadoEndereco'].dirty || FormDadosPessoais.controls['estadoEndereco'].touched)">
-          <span  *ngIf="FormDadosPessoais.controls.estadoEndereco.errors">
+        <div class="required "*ngIf="(FormCompleto.controls['estadoEndereco'].dirty || FormCompleto.controls['estadoEndereco'].touched)">
+          <span  *ngIf="FormCompleto.controls.estadoEndereco.errors">
             Estado obrigatório
           </span>
         </div>
@@ -292,8 +297,8 @@
 
       <div class="col-md-4 mr-4">
         <input type="text" name="paisEndereco" placeholder="País" id="paisEndereco"  formControlName="paisEndereco" name="paisEndereco" />
-        <div class="required "*ngIf="(FormDadosPessoais.controls['paisEndereco'].dirty || FormDadosPessoais.controls['paisEndereco'].touched)">
-          <span  *ngIf="FormDadosPessoais.controls.paisEndereco.errors">
+        <div class="required "*ngIf="(FormCompleto.controls['paisEndereco'].dirty || FormCompleto.controls['paisEndereco'].touched)">
+          <span  *ngIf="FormCompleto.controls.paisEndereco.errors">
             Pais obrigatório
           </span>
         </div>
@@ -301,8 +306,8 @@
 
       <div class="col-md-4">
         <input type="text" name="complementoEndereco" placeholder="Complemento" formControlName="complementoEndereco"  id="complementoEndereco" name="complementoEndereco" />
-        <!-- <div class="required "*ngIf="(FormDadosPessoais.controls['complementoEndereco'].dirty || FormDadosPessoais.controls['complementoEndereco'].touched)">
-          <span  *ngIf="FormDadosPessoais.controls.complementoEndereco.errors">
+        <!-- <div class="required "*ngIf="(FormCompleto.controls['complementoEndereco'].dirty || FormCompleto.controls['complementoEndereco'].touched)">
+          <span  *ngIf="FormCompleto.controls.complementoEndereco.errors">
             Complemento Endereço obrigatório
           </span>
         </div> -->
@@ -313,24 +318,24 @@
     <span class="col-md-11 mb-2">Contato de emergência</span>
   <div class="col-md-4 mr-4">
     <input type="text" name="nomeContatoEmergencia" placeholder="Nome Completo" formControlName="nomeContatoEmergencia"  id="nomeContatoEmergencia" />
-    <div class="required "*ngIf="(FormDadosPessoais.controls['nomeContatoEmergencia'].dirty || FormDadosPessoais.controls['nomeContatoEmergencia'].touched)">
-      <span  *ngIf="FormDadosPessoais.controls.nomeContatoEmergencia.errors">
+    <div class="required "*ngIf="(FormCompleto.controls['nomeContatoEmergencia'].dirty || FormCompleto.controls['nomeContatoEmergencia'].touched)">
+      <span  *ngIf="FormCompleto.controls.nomeContatoEmergencia.errors">
         Nome Contato de emergência obrigatório
       </span>
     </div>
   </div>
   <div class="col-md-3 mr-4">
     <input type="text" name="parentescoContatoEmergencia" placeholder="Parentesco" formControlName="parentescoContatoEmergencia" id="parentescoContatoEmergencia" />
-    <div class="required "*ngIf="(FormDadosPessoais.controls['parentescoContatoEmergencia'].dirty || FormDadosPessoais.controls['parentescoContatoEmergencia'].touched)">
-      <span  *ngIf="FormDadosPessoais.controls.parentescoContatoEmergencia.errors">
+    <div class="required "*ngIf="(FormCompleto.controls['parentescoContatoEmergencia'].dirty || FormCompleto.controls['parentescoContatoEmergencia'].touched)">
+      <span  *ngIf="FormCompleto.controls.parentescoContatoEmergencia.errors">
         Parentesco de emergência obrigatório
       </span>
     </div>
   </div>
   <div class="col-md-4">
     <input type="text" name="celularContatoEmergencia" placeholder="Celular"  formControlName="celularContatoEmergencia" id="celularContatoEmergencia" />
-    <div class="required "*ngIf="(FormDadosPessoais.controls['celularContatoEmergencia'].dirty || FormDadosPessoais.controls['celularContatoEmergencia'].touched)">
-      <span  *ngIf="FormDadosPessoais.controls.celularContatoEmergencia.errors">
+    <div class="required "*ngIf="(FormCompleto.controls['celularContatoEmergencia'].dirty || FormCompleto.controls['celularContatoEmergencia'].touched)">
+      <span  *ngIf="FormCompleto.controls.celularContatoEmergencia.errors">
         Celular de emergência obrigatório
       </span>
     </div>
@@ -339,12 +344,13 @@
 
 
     <input type="button" name="previous" class="previous action-button" value="Previous" />
-    <input type="button" name="next" class="next action-button"value="Next" />
+    <input type="button" name="next"  class="next action-button"value="Next" />
     <!-- [disabled]="!FormDadosPessoais.valid"  -->
   </fieldset>
 
 
-  <fieldset>
+  <fieldset >
+    <!-- [formGroup]="FormInfoSaude" -->
     <h2 class="fs-title">INFORMAÇÕES DE SAÚDE</h2>
     <h3 class="fs-subtitle">We will never sell it</h3>
     <div class="col-md-12 mb-5">
@@ -359,9 +365,9 @@
         <label for="naoProblemaSaude">Não</label>
       </div>
 
-      <div  id="ProblemaSaude" name="ProblemaSaude" >
+      <div  id="ProblemaSaude"  name="ProblemaSaude" >
         <label class="mt-3">Conte um pouco sobre o seu problema de saúde* :</label>
-        <textarea></textarea>
+        <textarea formControlName="problemaSaude" ></textarea>
       </div>
     </div>
 
@@ -379,7 +385,7 @@
 
     <div style="padding-top: 83px; padding-left: 30px;" id="Medicamento" name="Medicamento" >
       <label >Conte um pouco sobre a sua medicação* :</label>
-      <textarea></textarea>
+      <textarea formControlName="medicamento" ></textarea>
     </div>
     </div>
 
@@ -402,7 +408,7 @@
 
       <div  id="restricaoAlimentacao" name="restricaoAlimentacao" >
         <label class="mt-3">Conte um pouco sobre a sua medicação* :</label>
-        <textarea></textarea>
+        <textarea  formControlName="restricaoAlimentacao" ></textarea>
       </div>
     </div>
 
@@ -420,7 +426,7 @@
 
       <div  id="AtividadeFisica" name="AtividadeFisica" >
         <label class="mt-3">Conte um pouco sobre a sua medicação* :</label>
-        <textarea></textarea>
+        <textarea formControlName="atividadeFisica"></textarea>
     </div>
 
 
@@ -432,63 +438,167 @@
 
 
     <input type="button" name="previous" class="previous action-button" value="Previous" />
-    <input type="button" name="next" class="next action-button"value="Next" />
+    <input type="button" name="next"  [disabled]="!FormInfoSaude.valid"  class="next action-button"value="Next" />
 
   </fieldset>
 
 
-  <fieldset>
+  <fieldset >
+    <!-- [formGroup]="FormQuestionario" -->
     <h2 class="fs-title">QUESTIONÁRIO</h2>
     <h3 class="fs-subtitle">This is step 1</h3>
 
-<div>
-  Nos conte um pouco mais sobre você, detalhando sua escolaridade e experiência profissional.*
-  <textarea></textarea>
-</div>
-<div >
-  O que faz você querer ser voluntário nesse projeto e como você pode contribuir?*
-  <textarea></textarea>
-</div>
-
-<div >
-  Você já fez algum tipo de trabalho voluntário? Se sim, aonde e o que você fazia?*
-  <textarea></textarea>
-</div>
-
-
-<div >
-  Você já fez algum intercâmbio (social, cursos de idioma, acadêmico, etc)?
-  <textarea></textarea>
-</div>
-<div>Como você classifica seu nível de inglês nos critérios abaixo?*</div>
-
-<div >Tem conhecimento em alguma outra língua?*
-  <textarea></textarea>
-</div>
-
-<div >
-  Quais são suas principais habilidades e quais atividades você pode realizar?*
-  <textarea></textarea>
-</div>
-
-<div >
-  Tem alguma observação que você queira acrescentar?*
-  <textarea></textarea>
-</div>
-
-<div >Após o envio do formulário, um dos nossos consultores ligará para você explicando os próximos passos. Qual seria o melhor horário para entrarmos em contato (horário comercial)?*
-  <textarea></textarea>
-</div>
-
-
-<div >
-  Cupom de desconto
-  <input type="text" class="col-md-5">
-</div>
-<div>
-    <input type="button" name="previous" class="previous action-button" value="Previous" />
-      <input type="submit" name="submit" class="submit action-button" value="Submit" />
+    <div class="col-md-12">
+      <div class="col-md-5 mr-5">
+        Nos conte um pouco mais sobre você, detalhando sua escolaridade e experiência profissional.*
+        <textarea formControlName="escolaridadeExperienciaProffisional"></textarea>
+      </div>
+      <div class="col-md-5">
+        O que faz você querer ser voluntário nesse projeto e como você pode contribuir?*
+        <textarea formControlName="voluntario"></textarea>
+      </div>
     </div>
+
+
+    <div class="col-md-12">
+      <div class="col-md-5 mr-5">
+        Você já fez algum tipo de trabalho voluntário? Se sim, aonde e o que você fazia?*
+        <textarea formControlName="realizouTrabalhoVoluntario"></textarea>
+      </div>
+      <div class="col-md-5">
+        Você já fez algum intercâmbio (social, cursos de idioma, acadêmico, etc)?
+        <textarea formControlName="intercambio"></textarea>
+      </div>
+    </div>
+
+
+<div class="col-md-5 mb-3">Como você classifica seu nível de inglês nos critérios abaixo?*</div>
+<table  class="table table-striped mb-3">
+  <thead>
+    <tr>
+      <th  scope="col">#</th>
+      <th scope="col">Sem conhecimento</th>
+      <th scope="col">Básico</th>
+      <th scope="col">Intermediario</th>
+      <th scope="col">Avançado</th>
+      <th scope="col">Fluente</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Comunicação</th>
+      <td>
+        <input type="radio" name="comunicacao" id="comunicacao" value="Semconhecimento">
+      </td>
+      <td>
+        <input type="radio" name="comunicacao" id="comunicacao" value="basico">
+      </td>
+      <td>
+        <input type="radio" name="comunicacao" id="comunicacao" value="intermediario">
+      </td>
+      <td>
+        <input type="radio" name="comunicacao" id="comunicacao" value="avancado">
+      </td>
+      <td>
+        <input type="radio" name="comunicacao" id="comunicacao" value="fluente">
+      </td>
+    </tr>
+
+    <tr>
+      <th scope="row">Compreensão</th>
+      <td>
+        <input type="radio" name="compreensao" id="compreensao" value="Semconhecimento">
+      </td>
+      <td>
+        <input type="radio" name="compreensao" id="compreensao" value="basico">
+      </td>
+      <td>
+        <input type="radio" name="compreensao" id="compreensao" value="intermediario">
+      </td>
+      <td>
+        <input type="radio" name="compreensao" id="compreensao" value="avancado">
+      </td>
+      <td>
+        <input type="radio" name="compreensao" id="compreensao" value="fluente">
+      </td>
+    </tr>
+
+
+    <tr>
+      <th scope="row">Leitura</th>
+      <td>
+        <input type="radio" name="leitura" id="leitura" value="Semconhecimento">
+      </td>
+      <td>
+        <input type="radio" name="leitura" id="leitura" value="basico">
+      </td>
+      <td>
+        <input type="radio" name="leitura" id="leitura" value="intermediario">
+      </td>
+      <td>
+        <input type="radio" name="leitura" id="leitura" value="avancado">
+      </td>
+      <td>
+        <input type="radio" name="leitura" id="leitura" value="fluente">
+      </td>
+    </tr>
+
+
+    <tr>
+      <th scope="row">Escrita</th>
+      <td>
+        <input type="radio" name="escrita" id="escrita" value="Semconhecimento">
+      </td>
+      <td>
+        <input type="radio" name="escrita" id="escrita" value="basico">
+      </td>
+      <td>
+        <input type="radio" name="escrita" id="escrita" value="intermediario">
+      </td>
+      <td>
+        <input type="radio" name="escrita" id="escrita" value="avancado">
+      </td>
+      <td>
+        <input type="radio" name="escrita" id="escrita" value="fluente">
+      </td>
+    </tr>
+
+
+
+  </tbody>
+</table>
+
+    <div class="col-md-12">
+      <div class="col-md-5 mr-5">Tem conhecimento em alguma outra língua?*
+        <textarea formControlName="lingua"></textarea>
+      </div>
+      <div class="col-md-5">
+        Quais são suas principais habilidades e quais atividades você pode realizar?*
+        <textarea formControlName="habilidades"></textarea>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="col-md-5 mr-5">
+  Tem alguma observação que você queira acrescentar?*
+        <textarea formControlName="observacao"></textarea>
+      </div>
+      <div class="col-md-5">
+        Após o envio do formulário, um dos nossos consultores ligará para você explicando os próximos passos. Qual seria o melhor horário para entrarmos em contato (horário comercial)?*
+        <textarea formControlName="horario"></textarea>
+      </div>
+    </div>
+
+
+<div class="col-md-12">
+  <h3>Cupom de desconto</h3>
+  <input formControlName="desconto" type="text" class="col-md-12">
+</div>
+
+
+    <input type="button" name="previous" class="previous action-button" value="Previous" />
+    <input type="button" class="action-button" value="Enviar Formulario" (click)="enviarFormulario()"/>
+
   </fieldset>
 
 </form>

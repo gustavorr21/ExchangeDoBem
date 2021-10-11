@@ -23,4 +23,13 @@ teste: any[] = [];
     // );
 
   }
+
+  insert(value: any) {
+    const teste= {teste: 'teste'};
+    this.db.collection('inscricao').add(value)
+      .then((result: any) => {
+        console.log(result.key);
+      });
+  }
+
 }

@@ -42,6 +42,7 @@ $(".next").click(function(){
 });
 
 $(".previous").click(function(){
+  debugger;
   if(animating) return false;
   animating = true;
 
