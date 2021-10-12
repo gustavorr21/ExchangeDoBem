@@ -6,6 +6,8 @@ import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { Observable } from 'rxjs';
 import { InscricaoService } from 'Service/Services/inscricao.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -65,7 +67,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatSort) sort: MatSort | any;
 
-  constructor( private inscricaoService: InscricaoService) {
+  constructor( private inscricaoService: InscricaoService,private auth: AngularFireAuth,private router: Router) {
     this.dataSource = new MatTableDataSource(this.contatos); }
 
   ngOnInit(): void {
@@ -93,5 +95,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+  onlogout(){
+    this.auth.signOut().then(()=> this.router.navigate(['/login']));
   }
 }
