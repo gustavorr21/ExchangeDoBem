@@ -117,6 +117,7 @@ this.FormCompleto = this.formBuilder.group({
   observacao: ['',Validators.required],
   horario: ['',Validators.required],
   desconto: ['',Validators.required],
+  dataInscricao: [''],
 });
   }
 
@@ -124,6 +125,18 @@ this.FormCompleto = this.formBuilder.group({
     debugger;
   }
   postar() {
+    debugger;
+
+    Object.keys(this.FormGroup.controls).forEach(campo =>{
+      const controle = this.FormGroup.get(campo);
+      controle?.markAsDirty;
+      controle?.markAsTouched;
+
+      if(controle instanceof FormGroup){
+        controle?.markAsDirty;
+        controle?.markAsTouched;
+      }
+    })
     if (!this.FormGroup.valid) {
       console.log("Formulário inválido");
       return;
@@ -135,6 +148,20 @@ this.FormCompleto = this.formBuilder.group({
   enviarFormulario()
   {
     debugger;
+    let now = new Date();
+    this.FormCompleto.value['dataInscricao'] = now;
     this.inscricaoService.insert(this.FormCompleto.value);
+  }
+
+  verificaValidTouched(campo: any){
+    return !this.FormGroup.get(campo)?.valid
+  }
+
+  aplicaCssErro(campo: any){
+    debugger;
+    return {
+      'has-error': this.verificaValidTouched(campo),
+      'has-feedback': this.verificaValidTouched(campo)
+    };
   }
 }

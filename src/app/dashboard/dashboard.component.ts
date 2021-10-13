@@ -19,46 +19,63 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   contatos: any[] = [];
   data:any[] = [];
   settings = {
-    actions: {
-      add: false,
-      edit: false,
-      delete: false,
-      custom: [{ name: 'ourCustomAction', title: '<i class="nb-compose"></i>' }],
-      position: 'right',
 
+    delete: {
+      confirmDelete: false,
     },
     add: {
       confirmCreate: false,
     },
     edit: {
-      confirmSave: false,
+      editButtonContent: '<img src="assets/editar.png" width="20" height="20" >',
+      saveButtonContent: '<img src="assets/salvar.png" width="20" height="20" >',
+      cancelButtonContent: '<img src="assets/fechar.png" width="20" height="20" >',
+      confirmSave: true
     },
-    columns: {
+    actions: {
+      custom: [],
+      add: false,
+      edit: true,
+      delete: false,
+      position: 'right',
 
-      nome: {
-        title: 'Nome'
-      },
-      sexo: {
-        title: 'Sexo'
-      },
-      cpf: {
-        title: 'CPF'
-      },
+    },
+    pager: {
+      display: true,
+      perPage: 5,
+    },
+    // add: {
+    //   confirmCreate: false,
+    // },
+    // edit: {
+    //   editButtonContent: '<i class="ion-edit"></i>',
+    //   saveButtonContent: '<i class="ion-checkmark"></i>',
+    //   cancelButtonContent: '<i class="ion-close"></i>',
+    //       confirmSave: true
+    // },
+    columns: {
       email: {
         title: 'Email'
       },
-      profissao: {
-        title: 'profissao'
+      nome: {
+        title: 'Nome'
+      },
+      dataInscricao: {
+        title: 'data Inscrição'
+      },
+      data: {
+        title: 'Data Ida'
+      },
+      semana: {
+        title: 'Semanas'
+      },
+      Projeto: {
+        title: 'Projeto'
       },
       pais: {
-        title: 'Pais de Destino'
+        title: 'Pais'
       },
-      problemaSaude: {
-        title: 'Problema Saúde'
-      },
-      restricaoAlimentacao: {
-        title: 'Restrição Alimentação'
-      }
+
     }
   };
 
@@ -78,12 +95,14 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         ...element.payload.doc.data(),
       })
       )
+      debugger;
       this.dataSource = new MatTableDataSource(this.contatos);
       this.data = this.contatos;
     })
   }
 
   ngAfterViewInit() {
+    debugger;
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
@@ -98,5 +117,11 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
   onlogout(){
     this.auth.signOut().then(()=> this.router.navigate(['/login']));
+  }
+  onSaveConfirm(event: any) {
+    debugger;
+
+    console.log("Edit Event In Console")
+    console.log(event);
   }
 }

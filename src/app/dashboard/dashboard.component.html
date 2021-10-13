@@ -1,11 +1,11 @@
 <div style="background-color: aliceblue;" class="row col-md-12">
-<ng2-smart-table style="
+<ng2-smart-table allowFiltering='true' allowPaging='true' style="
 outline: 0.5rem solid khaki;
 border-radius: 12px;
 font: bold 1rem sans-serif;
 margin: 2rem;
 padding: 1rem;
-outline-offset: 0.5rem;" [settings]="settings" [source]="data"></ng2-smart-table>
+outline-offset: 0.5rem;" [settings]="settings" [source]="data" (editConfirm)="onSaveConfirm($event)"></ng2-smart-table>
 </div>
 
 

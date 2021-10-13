@@ -8,7 +8,7 @@
   <!-- <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css"> -->
 </head>
 <body>
-<form id="msform" [formGroup]="FormCompleto">
+<form id="msform" [formGroup]="FormCompleto" ngNativeValidate #form >
   <!-- progressbar -->
   <ul id="progressbar">
     <li class="active">DADOS DO PROJETO</li>
@@ -24,8 +24,9 @@
 
     <h2 class="fs-title">DADOS DO PROJETO</h2>
     <h3 class="fs-subtitle">This is step 1</h3>
-    <div class="col-md-12">
-      <input type="text" formControlName="pais" name="pais" placeholder="Pais" />
+
+    <div class="col-md-12" >
+      <input type="text" formControlName="pais" class="form-control" required name="pais" id="pais" placeholder="Pais" [ngClass]="aplicaCssErro('pais')" />
       <div class="required "*ngIf="(FormCompleto.controls['pais'].dirty || FormCompleto.controls['pais'].touched)">
         <span  *ngIf="FormCompleto.controls.pais.errors">
           Pais obrigatório
