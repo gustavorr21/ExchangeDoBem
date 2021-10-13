@@ -1,18 +1,42 @@
-<h2 class="text-center"> Entrar</h2>
 
-<form (ngSubmit)="onSubmit()" #form="ngForm">
-<div class="form-group">
-  <label>Email</label>
-  <input class="form-control" type="email" placeholder="Email" name="email" id="email" [(ngModel)]="login.email" requi
-    required>
-</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-2"></div>
+            <div class="col-lg-6 col-md-8 login-box">
+                <div class="col-lg-12 login-key">
+                    <i class="fa fa-key" aria-hidden="true"></i>
+                </div>
+                <div class="col-lg-12 login-title">
+                    ADMIN PANEL
+                </div>
 
-<div class="form-group">
-  <label>Senha</label>
-  <input class="form-control" type="password" placeholder="password" name="password" id="password" [(ngModel)]="login.password"
-    required>
-</div>
+                <div class="col-lg-12 login-form">
+                    <div class="col-lg-12 login-form">
+                        <form (ngSubmit)="onSubmit()" #form="ngForm">
+                            <div class="form-group">
+                                <label class="form-control-label">USERNAME</label>
+                                <input type="text" name="email" id="email" [(ngModel)]="login.email" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">PASSWORD</label>
+                                <input type="password" name="password" id="password"[(ngModel)]="login.password" class="form-control">
+                            </div>
 
-<button type="submit" class="btn btn-primary btn-block" [disabled]="form.form.invalid">Entrar</button>
-<button type="button" class="btn btn-link btn-block" [routerLink]="['/create-account']">Criar conta</button>
-</form>
+                            <div class="col-lg-12 loginbttm">
+                                <div class="col-lg-6 login-btm login-text">
+                                    <!-- Error Message -->
+                                </div>
+                                <div class="col-lg-6 login-btm login-button">
+                                    <button type="submit" class="btn btn-outline-primary btn-block">LOGIN</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-2"></div>
+            </div>
+        </div>
+
+
+
+
