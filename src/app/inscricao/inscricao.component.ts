@@ -13,6 +13,8 @@ export class InscricaoComponent implements OnInit {
   FormInfoSaude: FormGroup;
   FormQuestionario: FormGroup;
   FormCompleto: FormGroup;
+
+
   constructor(private formBuilder: FormBuilder,
     private inscricaoService: InscricaoService) {
     this.FormGroup = this.formBuilder.group({

@@ -101,7 +101,7 @@
         </div>
       </div>
       <div class="col-md-4">
-        <input type="text" formControlName="cpf" name="cpf" class="cpf-mask" placeholder="CPF"/>
+        <input type="text" formControlName="cpf" name="cpf" class="cpf-mask"[validation]="true" mask="000.000.000-00"  placeholder="CPF"/>
         <div class="required "*ngIf="(FormCompleto.controls['cpf'].dirty || FormCompleto.controls['cpf'].touched)">
           <span  *ngIf="FormCompleto.controls.cpf.errors">
             CPF obrigatório
@@ -118,6 +118,7 @@
     <div class="col-md-12 mb-3">
       <div class="col-md-4 mr-4">
         <input type="date" formControlName="dataNascimento" name="dataNascimento" placeholder="Data de Nascimento" />
+        <label>Data de Nascimento</label>
         <div class="required "*ngIf="(FormCompleto.controls['dataNascimento'].dirty || FormCompleto.controls['dataNascimento'].touched)">
           <span  *ngIf="FormCompleto.controls.dataNascimento.errors">
             Data de Nascimento é obrigatório
@@ -125,7 +126,7 @@
         </div>
       </div>
       <div class="col-md-3 mr-4">
-        <input type="text" name="cel" formControlName="cel" placeholder="+ () Celular" id="phone" />
+        <input type="text" name="cel" formControlName="cel" mask="(00) 00000-0000" placeholder="+ () Celular" id="phone" />
         <label>*Lembre-se de incluir o código do país e o código de área</label>
         <div class="required "*ngIf="(FormCompleto.controls['cel'].dirty || FormCompleto.controls['cel'].touched)">
           <span  *ngIf="FormCompleto.controls.cel.errors">
@@ -134,7 +135,7 @@
         </div>
       </div>
       <div class="col-md-4">
-        <input type="text" name="telefone" formControlName="telefone" placeholder="+ () Telefone" id="phone" />
+        <input type="text" name="telefone" formControlName="telefone" mask="(00) 00000-0000" placeholder="+ () Telefone" id="phone" />
         <label>*Lembre-se de incluir o código do país e o código de área</label>
         <div class="required "*ngIf="(FormCompleto.controls['telefone'].dirty || FormCompleto.controls['telefone'].touched)">
           <span  *ngIf="FormCompleto.controls.telefone.errors">
@@ -236,7 +237,7 @@
 
     <div class="col-md-12">
       <div class="col-md-3">
-        <input type="text" name="cep" placeholder="CEP" formControlName="cep"  name="cep" id="cep"/>
+        <input type="text" name="cep" placeholder="CEP" formControlName="cep" mask="00000-000" name="cep" id="cep"/>
         <div class="required "*ngIf="(FormCompleto.controls['cep'].dirty || FormCompleto.controls['cep'].touched)">
           <span  *ngIf="FormCompleto.controls.cep.errors">
             CEP obrigatório
@@ -333,7 +334,7 @@
     </div>
   </div>
   <div class="col-md-4">
-    <input type="text" name="celularContatoEmergencia" placeholder="Celular"  formControlName="celularContatoEmergencia" id="celularContatoEmergencia" />
+    <input type="text" name="celularContatoEmergencia" placeholder="Celular"  mask="(00) 00000-0000" formControlName="celularContatoEmergencia" id="celularContatoEmergencia" />
     <div class="required "*ngIf="(FormCompleto.controls['celularContatoEmergencia'].dirty || FormCompleto.controls['celularContatoEmergencia'].touched)">
       <span  *ngIf="FormCompleto.controls.celularContatoEmergencia.errors">
         Celular de emergência obrigatório
@@ -488,7 +489,7 @@
     <tr>
       <th scope="row">Comunicação</th>
       <td>
-        <input type="radio" name="comunicacao" id="comunicacao" value="Semconhecimento">
+        <input type="radio" checked name="comunicacao" id="comunicacao" value="Semconhecimento">
       </td>
       <td>
         <input type="radio" name="comunicacao" id="comunicacao" value="basico">
@@ -507,7 +508,7 @@
     <tr>
       <th scope="row">Compreensão</th>
       <td>
-        <input type="radio" name="compreensao" id="compreensao" value="Semconhecimento">
+        <input type="radio" checked name="compreensao" id="compreensao" value="Semconhecimento">
       </td>
       <td>
         <input type="radio" name="compreensao" id="compreensao" value="basico">
@@ -527,7 +528,7 @@
     <tr>
       <th scope="row">Leitura</th>
       <td>
-        <input type="radio" name="leitura" id="leitura" value="Semconhecimento">
+        <input type="radio" checked name="leitura" id="leitura" value="Semconhecimento">
       </td>
       <td>
         <input type="radio" name="leitura" id="leitura" value="basico">
@@ -547,7 +548,7 @@
     <tr>
       <th scope="row">Escrita</th>
       <td>
-        <input type="radio" name="escrita" id="escrita" value="Semconhecimento">
+        <input type="radio" checked name="escrita" id="escrita" value="Semconhecimento">
       </td>
       <td>
         <input type="radio" name="escrita" id="escrita" value="basico">

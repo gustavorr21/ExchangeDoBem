@@ -24,6 +24,7 @@ import { LoginComponent } from './account/login/login.component';
 import { CreateAccountComponent } from './account/create-account/create-account.component';
 import { HomeComponent } from './layout/home/home.component';
 import { AuthenticationComponent } from './layout/authentication/authentication.component';
+import {NgxMaskModule} from 'ngx-mask';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +53,10 @@ import { AuthenticationComponent } from './layout/authentication/authentication.
     MatInputModule,
     MatPaginatorModule,
     MatTableModule,
-    Ng2SmartTableModule
+    Ng2SmartTableModule,
+    NgxMaskModule.forRoot({
+      dropSpecialCharacters: true
+    }),
   ],
 
   entryComponents: [DashboardComponent],
